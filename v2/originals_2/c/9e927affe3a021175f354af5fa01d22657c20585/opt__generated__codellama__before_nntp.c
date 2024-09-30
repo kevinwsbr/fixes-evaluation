@@ -1,0 +1,8 @@
+
+This code defines the `struct MxOps` that is used to implement NNTP mailbox operations. It provides callback functions for opening and closing mailboxes, checking for new messages, synchronizing mailboxes, opening and closing messages, and editing message tags.
+
+The `nntp_mbox_open` function is called when a new NNTP mailbox is opened. It initializes the necessary data structures and establishes a connection to the NNTP server. The `nntp_mbox_check` function is called periodically to check for new messages in the NNTP mailbox. It fetches the message numbers of new messages from the NNTP server and stores them in the mailbox structure. The `nntp_mbox_sync` function synchronizes the local copy of the NNTP mailbox with the remote copy by fetching the message headers and storing them in the local database. The `nntp_msg_open` function is called when a new message is opened for editing. It fetches the message header and stores it in the local database, and the `nntp_msg_close` function is called when the message is closed without being committed.
+
+The `mx_nntp_ops` structure defines the callback functions that are used to implement NNTP mailbox operations. It provides a set of functions for opening and closing mailboxes, checking for new messages, synchronizing mailboxes, opening and closing messages, and editing message tags. These functions are called by Mutt's mailbox code to perform various actions related to the NNTP mailboxes.
+
+Overall, this code defines a set of functions that can be used to implement NNTP mailbox operations in Mutt. It provides a way for Mutt to interact with NNTP servers and store message headers and bodies in a local database.

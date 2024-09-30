@@ -1,0 +1,9 @@
+ This function is responsible for retrieving the BOS descriptor set from a USB device. The function first retrieves the BOS descriptor itself, and then retrieves the entire BOS descriptor set using the `usb_get_descriptor()` function. It then parses the descriptor set to extract the various capabilities that are supported by the device, such as wireless USB, extended capabilities, SuperSpeed capabilities, and container IDs.
+
+The function starts by allocating memory for a `struct usb_bos_descriptor` structure using `kzalloc()`, which is then used to retrieve the BOS descriptor from the device using the `usb_get_descriptor()` function. The function then checks that the returned length is at least as long as the size of the `USB_DT_BOS` descriptor, and that the total length of the BOS descriptor set is greater than or equal to the length of the BOS descriptor itself.
+
+After retrieving the entire BOS descriptor set using `usb_get_descriptor()`, the function then parses it to extract the various capabilities that are supported by the device. It does this by iterating over each capability in the BOS descriptor set, and checking the type of each capability using the `bDescriptorType` field. If a capability is not recognized, the function simply warns the user about it.
+
+If there is an error retrieving or parsing the BOS descriptor set, the function returns an appropriate error code using `return -EINVAL`. Otherwise, it returns 0 to indicate success.
+
+Note that this function assumes that the device has a valid BOS descriptor set, and will return an error if the BOS descriptor is invalid or cannot be retrieved. It also assumes that the device supports at least one capability, such as wireless USB, and will return an error if no capabilities are found in the BOS descriptor set.

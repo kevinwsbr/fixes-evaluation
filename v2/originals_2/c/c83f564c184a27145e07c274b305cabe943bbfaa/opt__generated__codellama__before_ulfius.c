@@ -1,0 +1,5 @@
+  This is a set of C functions for URL encoding and decoding, as well as some global initialization and cleanup code. The `ulfius_url_encode` function takes a string and returns an encoded version of it that can be safely used in a URL. The `ulfius_url_decode` function does the opposite, taking an encoded string and returning its original decoded form.
+
+The global initialization and cleanup code uses the `curl_global_init` and `curl_global_cleanup` functions from the libcurl library to initialize and clean up the curl global state. It also sets custom memory allocation functions for the libjson library using the `json_set_alloc_funcs` function.
+
+It's important to note that this code is not thread-safe, as it uses a single buffer for encoding and decoding operations. If you need to use these functions in a multi-threaded environment, you should either add synchronization primitives or use separate buffers per thread.

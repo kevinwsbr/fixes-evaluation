@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-400,Uncontrolled Resource Consumption,"The product does not properly control the allocation and maintenance of a limited resource, thereby enabling an actor to influence the amount of resources consumed, eventually leading to the exhaustion of available resources.",,https://cwe.mitre.org/data/definitions/400.html,False

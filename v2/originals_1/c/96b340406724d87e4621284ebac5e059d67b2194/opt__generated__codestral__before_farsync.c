@@ -1,0 +1,9 @@
+ The given code is a Linux kernel module for the FarSync WAN driver. It handles PCI devices with specific IDs, which are defined in the `fst_pci_dev_id` array. When a compatible device is found, the `fst_add_one` function is called to initialize it. This function performs several tasks such as allocating memory for the card structure, mapping memory regions, enabling PCI device, requesting an interrupt line, and initializing the card. If the card belongs to the TXU family, it also allocates DMA buffers for transmit and receive operations. If any of these steps fail, appropriate error messages are printed, resources are released, and the function returns with an error code.
+
+   The `fst_remove_one` function is responsible for cleaning up and closing down a card when it is removed. It unregisters network devices associated with the card, disables interrupts, frees the interrupt line, unmaps memory regions, releases PCI regions, and if the card belongs to the TXU family, it frees the DMA buffers as well.
+
+   The `fst_driver` structure defines the PCI driver with its name, ID table, probe function (called when a compatible device is found), remove function (called when a device is removed), and suspend and resume functions (which are currently set to NULL).
+
+   The `fst_init` function initializes the module by clearing the card array and initializing a spin lock. It then registers the PCI driver using `pci_register_driver`.
+
+   Finally, the `fst_cleanup_module` function is called when the module is unloaded. It prints an informational message and unregisters the PCI driver using `pci_unregister_driver`.

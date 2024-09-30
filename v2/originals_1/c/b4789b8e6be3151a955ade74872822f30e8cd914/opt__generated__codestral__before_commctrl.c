@@ -1,0 +1,7 @@
+ The code provided is part of the AAC (Adaptec Accelerated RAID) Linux driver. Here's a brief explanation of each function in the code:
+
+1. `aac_do_ioctl(struct aac_dev * dev, int cmd, void __user *arg)`: This is the main function that handles IOCTL (Input-Output Control) commands for the AAC driver. It first calls `aac_dev_ioctl()` to handle any HBA (Host Bus Adapter) specific commands. If the command is not handled by the HBA, it then checks for various other commands like `FSACTL_MINIPORT_REV_CHECK`, `FSACTL_SEND_LARGE_FIB`, `FSACTL_SENDFIB`, `FSACTL_OPEN_GET_ADAPTER_FIB`, `FSACTL_GET_NEXT_ADAPTER_FIB`, `FSACTL_CLOSE_GET_ADAPTER_FIB`, `FSACTL_SEND_RAW_SRB`, and `FSACTL_GET_PCI_INFO`. Depending on the command, it calls the appropriate function to handle it.
+2. `aac_send_raw_srb(struct aac_dev * dev, void __user *arg)`: This function is called when the `FSACTL_SEND_RAW_SRB` command is received. It sends a raw SRB (SCSI Request Block) to the HBA.
+3. `aac_get_pci_info(struct aac_dev* dev, void __user *arg)`: This function is called when the `FSACTL_GET_PCI_INFO` command is received. It retrieves the PCI (Peripheral Component Interconnect) bus and slot information for the device and copies it to the user space.
+
+Overall, this code handles various IOCTL commands for the AAC driver, including sending raw SRBs and retrieving PCI information. The functions in the code are well-documented and follow a clear structure, making it easy to understand their purpose and functionality.

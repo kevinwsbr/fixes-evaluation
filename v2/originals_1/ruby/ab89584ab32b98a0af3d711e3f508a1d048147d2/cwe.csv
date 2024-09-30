@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-248,Uncaught Exception,"An exception is thrown from a function, but it is not caught.","When an exception is not caught, it may cause the program to crash or expose sensitive information.",https://cwe.mitre.org/data/definitions/248.html,False

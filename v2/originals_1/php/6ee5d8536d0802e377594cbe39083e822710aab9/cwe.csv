@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-502,Deserialization of Untrusted Data,The product deserializes untrusted data without sufficiently verifying that the resulting data will be valid.,,https://cwe.mitre.org/data/definitions/502.html,False

@@ -1,0 +1,3 @@
+id,name,description,extended_description,url,is_category
+CWE-416,Use After Free,"Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",,https://cwe.mitre.org/data/definitions/416.html,False
+CWE-369,Divide By Zero,The product divides a value by zero.,"This weakness typically occurs when an unexpected value is provided to the product, or if an error occurs that is not properly detected. It frequently occurs in calculations involving physical dimensions such as size, length, width, and height.",https://cwe.mitre.org/data/definitions/369.html,False

@@ -1,0 +1,13 @@
+  This code defines two functions for allocating shared memory: `shmem_file_setup` and `shmem_zero_setup`. The first function creates a new file in the shared memory namespace with the specified size and permissions, while the second function creates an empty file that points to the zero page.
+
+The `shmem_file_setup` function is used to allocate memory for a shared memory region. It takes three arguments: the name of the file (which is not used), the size of the file in bytes, and a set of permissions. The function first allocates an inode using the `shmem_get_inode` function with the specified size and permissions. Then it instantiates the inode as a regular file by calling `d_instantiate`.
+
+The `shmem_zero_setup` function is used to allocate memory for a shared anonymous mapping. It first calls the `shmem_file_setup` function to allocate the shared memory region with the specified size and permissions. Then it sets the `vm_ops` field of the vma structure to the `shmem_vm_ops` operations vector, which specifies how the page cache should be managed for this mapping.
+
+The `shmem_read_mapping_page_gfp` function is used to read a shared memory region into the page cache using specified page allocation flags. It first checks that the address space has been set up with the shmem address space operations, which ensures that it is a shared memory namespace. Then it calls the `shmem_getpage_gfp` function to allocate a new page or retrieve an existing one from the shared memory region.
+
+The `shmem_getpage_gfp` function is used to allocate a new page or retrieve an existing one from the shared memory region. It first checks that the inode has been set up with the shmem address space operations, which ensures that it is a shared memory namespace. Then it uses the `inode_lock` function to lock the inode and prevent it from being deleted while the page is being read.
+
+Once the inode has been locked, the function calls the `shmem_add_to_page_cache` function to add the new page to the shared memory region. If the page cannot be allocated, the function returns an error code. Otherwise, it sets the `page->mapping` field of the new page to point to the inode and increments the `inode->i_count` field to prevent the inode from being deleted while the page is being read.
+
+Finally, the function unlocks the inode and returns a pointer to the new page or an error code if it was unable to allocate the page.

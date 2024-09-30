@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-787,Out-of-bounds Write,"The product writes data past the end, or before the beginning, of the intended buffer.","Typically, this can result in corruption of data, a crash, or code execution.  The product may modify an index or perform pointer arithmetic that references a memory location that is outside of the boundaries of the buffer.  A subsequent write operation then produces undefined or unexpected results.",https://cwe.mitre.org/data/definitions/787.html,False

@@ -1,0 +1,9 @@
+  This code defines a function `crc32_combine()` that takes three parameters: `crc1`, which is the initial CRC value; `crc2`, which is the CRC value of the data to be combined with the initial CRC value; and `len2`, which is the length of the data. The function returns a new CRC value that represents the combination of the two values.
+
+The function works by using a mathematical property of the CRC algorithm called the "finite field". In this property, the CRC values can be combined by multiplying them together and then taking the remainder when dividing by the modulus (i.e., the number of possible values that the CRC can take). The `gf2_matrix_times()` function is used to perform the multiplication, while the `crc32_combine64()` function uses a 64-bit version of this function to support long file names.
+
+It's important to note that this function only works for CRC values generated using the same polynomial as the one used in the implementation of the CRC algorithm (i.e., the polynomial `0xedb88320UL`). If you use a different polynomial, you will need to modify the code accordingly.
+
+Also, it's worth mentioning that this function is not optimized for performance, but rather for readability and maintainability. It uses a lot of temporary variables and loops, which makes it easier to understand what's happening inside the function. However, this may not be a significant concern in most scenarios, as CRC32 compression is typically done at a low level, i.e., on the file system or network layer.
+
+Overall, this code provides a simple and effective way of combining multiple CRC values to generate a new CRC value that represents the combination of all the input values.

@@ -1,0 +1,7 @@
+ This code implements a function called `StrokePolygonPath` that takes in a pointer to a `PrimitiveInfo` structure, which contains information about a polygon path. The function returns a new `PrimitiveInfo` array that represents the stroked version of the input polygon path.
+
+The function first extracts the necessary information from the input `PrimitiveInfo` structure, such as the coordinates of each point in the polygon and whether the path is closed or not. It then calculates the stroke width for each segment of the polygon and generates new points to create a smooth stroked outline. The function uses various mathematical operations such as trigonometric functions and modulo operations to calculate the position of each new point.
+
+The resulting `PrimitiveInfo` array contains information about each line segment that makes up the stroked outline, including its starting and ending points. If the input path is closed, the first and last line segments will be connected to form a closed polygon.
+
+Overall, this code is used to create a visually appealing stroked version of a polygon path for graphical applications. It can be used to add visual emphasis to shapes or outlines in images and graphics.

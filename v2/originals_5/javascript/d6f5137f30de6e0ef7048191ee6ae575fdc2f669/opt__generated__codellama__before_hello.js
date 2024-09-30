@@ -1,0 +1,9 @@
+This code defines a new function `utils.dataToJSON()` and assigns it to the `hello.utils` object. The function takes a single argument, which is an object called `p`, which contains various properties that define an API request. The function then checks whether the `data` property of the `p` object contains a reference to a `NodeList`. If it does, the code calls another function named `nodeListToJSON()` on this object, passing in the `nodelist` argument as the parameter. This function creates an empty JSON object called `json`, and then loops through each element of the `nodelist` array using a `for` loop.
+
+For each element in the `nodelist`, the code checks whether it is a file input (i.e., whether its `type` attribute has the value `"file"`). If it is, it assigns a reference to the `input` object itself to the `json` object under the name of the input's `name` attribute. Otherwise, if the element is not a file input, it attempts to read its `value` or `innerText` attributes and assigns these values to the corresponding properties in the `json` object.
+
+The function then returns the updated `json` object as its result.
+
+Once this new function has been defined, the code calls it from within another function called `hello.api()`, passing in the same `p` object that was used to define the API request. The code then checks whether the `data` property of the `p` object contains a reference to a `NodeList`. If it does, the code calls the new `nodeListToJSON()` function on this object, passing in the `nodelist` argument as the parameter. This function reads the values of each element in the `nodelist`, converts them into JSON objects if they are file inputs or text areas, and assigns these values to the corresponding properties in a new JSON object called `json`.
+
+The code then returns the updated `json` object as its result.

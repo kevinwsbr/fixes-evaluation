@@ -1,0 +1,5 @@
+ This Python script is using D-BUS for system-level communication and it looks like it's part of a larger application called "Back In Time" (BIT). The `UdevRules` class appears to be handling the cleaning up of previous cached rules and checking PolicyKit privileges. It uses sender information provided by the `SenderInfo` class to gather details about the connection and sender.
+
+The script starts by setting up the D-BUS main loop for PyQt5 and then it initializes a QCoreApplication. After that, it creates a system bus connection and sets up a service with the name "net.launchpad.backintime.serviceHelper". The `UdevRules` class is instantiated and its methods are made available through D-BUS on the object path '/UdevRules'.
+
+The script then enters an infinite loop (via app.exec_()) which allows it to handle D-BUS messages as they come in. However, without the rest of the script or additional context, it's hard to say exactly what these methods do or how they are used.

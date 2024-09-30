@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-697,Incorrect Comparison,"The product compares two entities in a security-relevant context, but the comparison is incorrect, which may lead to resultant weaknesses.",,https://cwe.mitre.org/data/definitions/697.html,False

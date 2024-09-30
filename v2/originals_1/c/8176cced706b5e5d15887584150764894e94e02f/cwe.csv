@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-189,Numeric Errors,Weaknesses in this category are related to improper calculation or conversion of numbers.,,https://cwe.mitre.org/data/definitions/189.html,True

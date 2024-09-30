@@ -1,0 +1,9 @@
+ The provided code is a TensorFlow Lite (TFLite) implementation of the "Split" operation. This operation divides an input tensor into multiple sub-tensors along a specified axis. Here's a breakdown of the main functions:
+
+1. `Prepare` function: This function is called during the model initialization phase and performs any setup necessary for the operation, such as checking the input type, resizing output tensors if possible, or deferring shape calculation until evaluation time. The input types supported are float32, uint8, int8, int16, and int32.
+
+2. `Eval` function: This function is called during model execution to perform the actual computation. If the 'axis' tensor was non-constant in Prepare(), this function resizes the output tensors as needed. It then determines the axis value along which to split the input tensor and calls a templated Split function with the appropriate data type. The Split function uses reference operations from TensorFlow Lite to perform the splitting operation.
+
+3. `Register_SPLIT` function: This function registers the "Split" operation for use in TFLite by returning a pointer to a static `TfLiteRegistration` structure, which includes pointers to the Prepare and Eval functions.
+
+The code also uses several helper classes and macros to simplify tensor manipulation and type handling, such as `OpContext`, `VectorOfTensors`, and `TF_LITE_SPLIT`. The `OpContext` class is used to encapsulate common TFLite operations related to input/output tensors and the operation's parameters. The `VectorOfTensors` class provides a convenient way to handle multiple output tensors, and the `TF_LITE_SPLIT` macro simplifies the process of calling the Split function for different data types.

@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-908,Use of Uninitialized Resource,The product uses or accesses a resource that has not been initialized.,"When a resource has not been properly initialized, the product may behave unexpectedly. This may lead to a crash or invalid memory access, but the consequences vary depending on the type of resource and how it is used within the product.",https://cwe.mitre.org/data/definitions/908.html,False

@@ -1,0 +1,6 @@
+id,name,description,extended_description,url,is_category
+CWE-502,Deserialization of Untrusted Data,The product deserializes untrusted data without sufficiently verifying that the resulting data will be valid.,,https://cwe.mitre.org/data/definitions/502.html,False
+CWE-20,Improper Input Validation,"The product receives input or data, but it does
+        not validate or incorrectly validates that the input has the
+        properties that are required to process the data safely and
+        correctly.",,https://cwe.mitre.org/data/definitions/20.html,False

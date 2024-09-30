@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-255,Credentials Management Errors,Weaknesses in this category are related to the management of credentials.,,https://cwe.mitre.org/data/definitions/255.html,True

@@ -1,0 +1,21 @@
+ This is a basic example of how to save an image as a JPEG YCbCr image. The function takes in an `Image` object, a `const char *` with the filename, and a `struct ExceptionInfo *` for error handling. It does not return anything.
+ 
+Here is a line-by-line breakdown of the code:
+
+1. `void JPEGWriteYCbCrImage(Image *image,const char *filename,ExceptionInfo *exception)`: This is the main function that saves an image as a JPEG YCbCr image. It takes in an `Image` object, a `const char *` with the filename, and a `struct ExceptionInfo *` for error handling.
+2. `MagickBool WriteJPEGYCbCrImage(Image *image,Image *chroma_image,ExceptionInfo *exception)`: This is a nested function that actually writes the JPEG YCbCr image to disk. It takes in an `Image` object with the luma (Y) and chroma (UV) images, and a `struct ExceptionInfo *` for error handling.
+3. `if (image->matte == MagickTrue)`: This checks if the input image has an alpha channel, or transparency. If it does, we set a `MagickBool` variable called `has_alpha` to true and then proceed with the rest of the code as usual.
+4. `if (interlace == PartitionInterlace)`: If the image is interlaced, we have to split it into three parts: the Y channel, the UV channel for CbCr, and the V channel for Cr.
+5. `chroma_image=CloneImage(image,0,0,MagickTrue,exception)`: We create a new image with the same dimensions as the input image, but without any alpha channel or any other extra information. This is the chroma image that we will use for the UV and V channels.
+6. `if (has_alpha != MagickFalse)`: If the input image had an alpha channel, we have to set up a new image with only the luma (Y) channel, since JPEG does not support transparency. We create a new image that is the same size as the original one, but with no alpha channel.
+7. `GetImageQuantumDepth(image,quantum)`: This function gets the number of bits per pixel for an image (either Y or UV). If it's 8-bit, we write out single bytes; if it's 16-bit, we write out two shorts.
+8. `WriteJPEGYCbCrImage(image,chroma_image,exception)`: This is where the actual writing happens. We call the nested function `WriteJPEGYCbCrImage` to do the work of saving the image as a JPEG YCbCr image.
+9. `if (interlace == PartitionInterlace)`: If the input image was interlaced, we have to write three separate files for each channel: Y, UV, and V. We use the `AppendImageFormat` function to create new filenames that have the appropriate extensions for each channel, and then call the nested `WriteJPEGYCbCrImage` function again with different parameters for each file.
+10. `chroma_image=DestroyImage(chroma_image)`: We destroy the chroma image because we no longer need it once we've finished writing out the UV and V channels.
+11. `if (interlace == PartitionInterlace)`: If the input image was interlaced, we have to close the Y channel file and reopen it as the new filename, which has the appropriate extension for the U or V channel. We do this for each of the three channels.
+12. `(void) CopyMagickString(image->filename,image_info->filename,MagickPathExtent)`: If the input image was interlaced, we have to copy the original filename back into the `Image` object's `filename` field, because we changed it earlier for the UV and V channels.
+13. `if (GetNextImageInList(image) == (Image *) NULL)`: This is a check to see if there are any more images in the list of images. If there aren't, then we're done. We exit out of the loop and return.
+14. `image=SyncNextImageInList(image)`: If there are still more images in the list, we get the next image from it by calling the `SyncNextImageInList` function. This will set the current image to the next one in the list, which is also an `Image` object.
+15. `JPEGWriteYCbCrImage(image,filename,exception)`: We then call this function again with the new `Image` object and the original filename from before we started writing out all the channels. This will write out the next image as a JPEG YCbCr image, which is either interlaced or not depending on whether there were any alpha channels in it.
+
+Overall, this function takes an `Image` object and writes it to disk as a JPEG YCbCr image, with the ability to handle interlacing and transparency.

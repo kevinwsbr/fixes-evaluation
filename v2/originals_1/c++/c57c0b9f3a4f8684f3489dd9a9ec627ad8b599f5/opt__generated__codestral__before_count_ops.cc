@@ -1,0 +1,7 @@
+ This is a C++ source code file from the TensorFlow project, which implements three kernels for counting elements in different types of input tensors: dense, sparse, and ragged. These kernels are used to count the number of occurrences of each unique value in an input tensor, with optional support for weights and min/max length constraints. The output is a sparse tensor representing the counts of each unique value.
+
+   The file defines a `DenseCount` class template that implements the dense counting kernel, a `SparseCount` class template that implements the sparse counting kernel, and a `RaggedCount` class template that implements the ragged counting kernel. Each class template takes two type parameters: `T`, which is the data type of the input tensor values, and `W`, which is the data type used to represent weights or counts in the output tensor.
+
+   The kernels use a `BatchedMap` helper class to efficiently store and update the counts for each batch of input data. The `OutputSparse` function is used to generate the final sparse output tensor, with optional support for binary output and 1D or 2D output shapes.
+
+   The file defines several registration macros to register the kernels for different combinations of input and output types. These macros are defined using TensorFlow's `REGISTER_KERNEL_BUILDER` macro and `TF_CALL_*` type dispatching utilities.

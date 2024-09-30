@@ -1,0 +1,5 @@
+This is an example of a function that loads a .it file and converts it into a CSoundFormat song structure. It uses the `csf_read_sample` function to load the sample data, which reads the sample data from the file and stores it in the given sample structure.
+
+The function first reads the header of the file, which contains information about the number of channels, the number of patterns, and other metadata. It then allocates memory for the trackdata array and reads the trackdata for each track into it. It also allocates memory for the song's patterns and reads the pattern data from the file.
+
+The function then frees up any temporary memory that was used to read the trackdata and pattern data, and sets the rest of the song structure's fields. Finally, it returns a value indicating whether the loading was successful or not.

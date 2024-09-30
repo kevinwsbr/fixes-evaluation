@@ -1,0 +1,11 @@
+This is a netlink interface for the Linux NFC subsystem. It provides a way to send and receive messages over the kernel's netlink interface, which allows for communication between userspace processes and the kernel without using syscalls. The interface provides a simple messaging protocol that can be used to exchange data between the user space and the kernel.
+
+The code you pasted is the initialization function for the nfc netlink interface. It registers the nfc netlink family with the Linux kernel, which allows it to send and receive messages over the netlink interface. The function also registers a notifier block that listens for NETLINK_URELEASE events on the generic netlink protocol.
+
+The notifier block is used to listen for changes in the state of the network link, such as when the link becomes active or inactive. When an event occurs, the notifier function is called with the type of event and a pointer to the netlink message. In this case, the function is called with NETLINK_URELEASE as the type of event, which indicates that a user space process has released its reference to the kernel's nfc interface.
+
+The function then schedules a work queue callback to be executed in the background to stop any polling that may be in progress. The callback function first locks the device list mutex and then iterates over all devices, checking if each one has a matching poll request port ID with the one provided in the netlink message. If it does, it stops the poll and clears the port ID.
+
+The reason for this is that when a user space process releases its reference to the nfc interface, it will no longer receive any messages from the kernel. In order to avoid sending data to a process that may no longer be listening, the kernel needs to stop any polling that may be in progress and clear the port ID so that no further messages are sent to it.
+
+Overall, this code initializes the nfc netlink interface with the Linux kernel and registers a notifier block to listen for changes in the state of the network link. It also provides a function to stop any polling that may be in progress when a user space process releases its reference to the kernel's nfc interface.

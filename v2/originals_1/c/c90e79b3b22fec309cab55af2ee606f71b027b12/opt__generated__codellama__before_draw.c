@@ -1,0 +1,9 @@
+The `StrokePolygon` function is used to create a stroked version of a given polygon. It takes the polygon as an array of points, and returns a new array of points representing the stroked polygon. The `closed_path` parameter indicates whether the input polygon is closed or not (i.e., if it starts and ends at the same point).
+
+The function first creates a copy of the input polygon, which it uses to store its internal state. It then iterates over each segment of the polygon, checking for intersections with the stroke line. For each intersection, it adds a new vertex to the stroked polygon, and updates the internal state accordingly.
+
+The function also handles special cases such as arcs and Bezier curves, which have different behavior than straight lines when it comes to intersecting them with the stroke line. In these cases, it uses various heuristics to determine where the intersection point should be placed on the curve.
+
+Once all the intersections have been computed, the function returns a new array of points representing the stroked polygon. This array is allocated using `AcquireQuantumMemory`, and its size is determined by adding 1 to the number of vertices in the input polygon (i.e., the number of coordinates it has), plus 2 if the polygon is closed, plus 2 if the stroke line intersects with the starting or ending point of the polygon.
+
+Note that the `StrokePolygon` function also uses various other utility functions such as `PerceptibleReciprocal`, which is used to check for a small value and treat it as zero, and `CheckPathExtent`, which is used to make sure the stroked path doesn't extend beyond a certain maximum size.

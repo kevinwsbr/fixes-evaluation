@@ -1,0 +1,3 @@
+\end{code}
+
+Answer: It is possible to use an existing module as a base for your new image format, but you need to have some familiarity with C and ImageMagick's API. I suggest you look at [the existing formats](https://github.com/ImageMagick/ImageMagick/tree/main/coders) in the `coders/` directory of the ImageMagick source tree. The simplest way to implement a new format is by copying and modifying an existing one, but you can also create your own from scratch if you need something different.

@@ -1,0 +1,10 @@
+ This is a C program that handles system buttons from input devices. It includes functions for opening and configuring the input device, checking the state of certain switches (such as the lid switch or docking switch), and handling events from those input devices. The program uses the systemd event loop to monitor input events.
+
+Here's a summary of the main functions:
+
+* `button_open(Button *b)`: This function opens the input device specified by the `name` field of the `Button` struct passed as an argument. It checks if the device is suitable for handling system buttons and sets up event masks to filter out irrelevant events. If successful, it adds an event source to the systemd event loop to handle input events from this device.
+* `button_set_mask(Button *b)`: This function sets up event masks on the input device specified by the `fd` field of the `Button` struct passed as an argument. It configures the mask to only pass through certain types of events (such as key presses and switch changes) that are relevant for handling system buttons.
+* `button_check_switches(Button *b)`: This function checks the state of certain switches on the input device specified by the `fd` field of the `Button` struct passed as an argument. It updates the `lid_closed` and `docked` fields of the `Button` struct based on the current switch states. If the lid is closed, it also installs a check event source to monitor for lid open events.
+* `button_dispatch(sd_event_source *s, int fd, uint32_t revents, void *userdata)`: This function is called by the systemd event loop when there are input events available on the device specified by the file descriptor `fd`. It reads and processes those events. If a relevant event (such as a key press or switch change) is detected, it generates an appropriate action (such as sending a suspend request to the login manager).
+
+Overall, this program provides a way for a system to respond to user input from various devices, such as power buttons and lid switches. It uses the systemd event loop to efficiently monitor input events and generate appropriate actions in response to those events.

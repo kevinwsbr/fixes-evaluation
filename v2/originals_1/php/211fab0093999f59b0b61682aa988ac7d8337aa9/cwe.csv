@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-311,Missing Encryption of Sensitive Data,The product does not encrypt sensitive or critical information before storage or transmission.,"The lack of proper data encryption passes up the guarantees of confidentiality, integrity, and accountability that properly implemented encryption conveys.",https://cwe.mitre.org/data/definitions/311.html,False

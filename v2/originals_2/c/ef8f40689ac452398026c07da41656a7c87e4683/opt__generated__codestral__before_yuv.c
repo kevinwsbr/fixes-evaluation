@@ -1,0 +1,7 @@
+ This is a function called `WriteYUVImage` in C language which is used to write an image into a YUV format file. Here's the explanation of what each section does:
+
+1. It checks if the colorspace is not RGB and converts it into RGB if necessary.
+2. For each frame in the image list, it extracts the luma (Y) component from the RGB image. This is done by looping through every pixel of the image and applying a formula to convert RGB values to YUV values. The Y value is then written into the output file.
+3. Next, it performs chroma subsampling on the U and V components of the YUV color space. Chroma subsampling is used to reduce the amount of bandwidth required for transmitting or storing a video signal. This function supports two types of chroma subsampling: AverageChromaInterlace (4:1:1) and PartitionInterlace (4:2:2). Depending on the type of subsampling, either one or two pixels are used to calculate each U/V value.
+4. The calculated U and V values are then written into separate files for 4:2:2 subsampling or interleaved with the Y values for 4:1:1 subsampling.
+5. If there are more frames in the image list, it moves to the next frame and repeats the process until all frames have been processed.

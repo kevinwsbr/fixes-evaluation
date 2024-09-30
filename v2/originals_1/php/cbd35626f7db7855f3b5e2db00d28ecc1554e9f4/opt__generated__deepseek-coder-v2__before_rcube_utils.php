@@ -1,0 +1,11 @@
+ The code provided is a collection of static methods in PHP designed to generate random strings, convert binary data into readable ASCII characters, format dates with microseconds support, and determine the maximum upload size based on server configuration. Below is an explanation of each method within this utility class:
+
+1. **random_bytes**: This method generates a random string using either `random_bytes` (if available) or `openssl_random_pseudo_bytes`. It supports generating raw binary data if `$raw` is set to true, otherwise it converts the binary data into an ASCII string. The length of the generated string can be specified by the `$length` parameter.
+
+2. **bin2ascii**: This method takes binary input and converts it into a readable ASCII format by mapping each byte to a specific character based on predefined tables (`hextab`). It is used to transform random bytes or other binary data into strings that are easier for humans to read and interpret.
+
+3. **date_format**: This method formats the current date according to a specified format, with an optional support for microseconds denoted by 'u' in the format string. If microseconds are included, it constructs a custom date-time string and attempts to parse this string into a `DateTime` object. If successful, it returns the formatted date; otherwise, it falls back to using plain `date()` function.
+
+4. **max_upload_size**: This method determines the maximum file upload size allowed by PHP based on server configurations (`upload_max_filesize` and `post_max_size`). It parses these configuration values and returns the maximum size in bytes, ensuring that it does not exceed the value set in `post_max_size`.
+
+Each method is designed to be both flexible and robust, handling different inputs gracefully and providing useful defaults for situations where parameters are omitted or null. The use of PHP's built-in functions (`ini_get`, `parse_bytes`, etc.) allows the class to adapt to various server configurations, making it versatile across different hosting environments.

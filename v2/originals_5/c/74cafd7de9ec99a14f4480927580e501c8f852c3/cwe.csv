@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-399,Resource Management Errors,Weaknesses in this category are related to improper management of system resources.,,https://cwe.mitre.org/data/definitions/399.html,True

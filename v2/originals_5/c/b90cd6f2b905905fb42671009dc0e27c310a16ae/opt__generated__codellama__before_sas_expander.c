@@ -1,0 +1,6 @@
+The `sas_smp_handler` function is called when an IOCTL request for an SMP command is received from a user space application. The function first checks whether the given Rphy object supports sending SMP requests by checking its device type which can be either SAS_EDGE_EXPANDER_DEVICE or SAS_FANOUT_EXPANDER_DEVICE.
+If the Rphy object does not support sending SMP requests, the function returns an error and quits.
+Otherwise, it uses `sas_find_dev_by_rphy` function to find the domain device associated with the given Rphy object. If there is no such device, the function prints an error message and returns an error.
+The function then checks whether the request contains multiple segments or not. If it does, it prints an error message and returns an error.
+Then it uses `smp_execute_task_sg` function to execute the SMP command on the domain device. The function returns the number of bytes received from the target in case of success, otherwise it returns a negative value which is treated as an error by the caller function.
+Finally, if the returned value is positive, the function updates the bsg_job structure with the length received and calls `bsg_job_done` function to complete the request.

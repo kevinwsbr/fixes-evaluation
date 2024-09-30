@@ -1,0 +1,7 @@
+This code defines a function called `GC_free` that is used to explicitly deallocate an object in the garbage collector. It takes a single argument, which is a pointer to the object being freed. The function first obtains a lock on the garbage collector using the `LOCK` macro, and then checks whether the object being freed is small enough to be placed on a free list. If it is, the function adds the object to the appropriate free list, which is a circularly linked list of objects of the same size. If the object is not small enough, the function calls `GC_freehblk` to explicitly deallocate the block of memory that the object occupies.
+
+The function also updates various counters and statistics related to garbage collection, such as the number of bytes freed by the collector and the number of blocks allocated for large objects.
+
+Note that this code is using a macro called `LOCK` to obtain a lock on the garbage collector. The macro is defined in the `gc.h` header file included at the top of the file, and it represents the specific mechanism used by the garbage collector to serialize access to its data structures. In some cases, the macro may expand to nothing, or to a platform-specific implementation that acquires a lock on the garbage collector's data structures.
+
+The function also includes code for handling explicitly allocated objects, which are objects that have been marked as uncollectable by calling `GC_MARK_UNCOLLECTABLE` on them. This code is not shown here, but it involves adding the object to a separate linked list of uncollectable objects.

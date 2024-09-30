@@ -1,0 +1,9 @@
+This function takes a `ptr_array` of objects, which is an array of pointers to plist data, and writes them to a binary plist format. The function first allocates memory for the offsets and references tables, which are used to store the position of each object in the binary plist.
+
+The function then loops through each object in the `ptr_array` and writes it to the binary plist. It uses a `switch` statement to determine the type of data that each object contains and handles it appropriately. For example, if an object is a boolean value, it writes the corresponding byte (`BPLIST_TRUE` or `BPLIST_FALSE`) to the binary plist. If the object is a string, it first checks if it is an ASCII string using the `is_ascii_string()` function. If it is an ASCII string, it writes the string directly to the binary plist as a byte array. Otherwise, it converts the string to UTF-16 using the `plist_utf8_to_utf16()` function and then writes the UTF-16 representation of the string to the binary plist.
+
+The function also handles arrays and dictionaries recursively by calling itself for each element in the array or dictionary. It uses a hash table to keep track of references to objects, so that it can write the reference to the object instead of writing the object multiple times.
+
+Once all the objects have been written to the binary plist, the function writes the offsets and references tables at the end of the binary plist. The offset table is used to store the position of each object in the binary plist, while the reference table stores references to other objects that the current object contains a reference to.
+
+Finally, the function sets the output buffer and size and frees any intermediate data structures before returning.

@@ -1,0 +1,10 @@
+ This code defines a class called `Collector` that is responsible for collecting sosreports from various nodes in a cluster, archiving them into a single tar file, and cleaning up temporary files created during the process. The class uses threading to collect reports concurrently from multiple nodes, and it also supports running an extra command on the master node if specified in the configuration.
+
+Here's a brief explanation of the main methods:
+
+1. `collect`: This is the entry point for collecting sosreports. It initializes the connection to each client node, runs the `_collect` method for each client in a separate thread using a ThreadPoolExecutor, and then closes all connections. If an extra command is specified in the configuration, it also runs that command on the master node. Finally, it creates a cluster archive by calling the `create_cluster_archive` method.
+2. `_collect`: This method runs the sosreport command on each client node (unless the `no_local` flag is set), and updates the `retrieved` attribute of the Collector object to keep track of how many reports were successfully collected.
+3. `close_all_connections`: This method closes all SSH sessions for each client node.
+4. `create_cluster_archive`: This method creates a tar archive containing all collected sosreports by calling the `create_sos_archive` method, and then cleans up temporary files created during the process by calling the `cleanup` method.
+5. `create_sos_archive`: This method creates a tar archive containing all sosreports in the temporary directory specified in the configuration. It also adds the logfile and console\_log\_file to the archive with specific arcnames.
+6. `cleanup`: This method removes the temporary directory and its contents if it was created by the Collector object, or it only removes sosarchives within the temporary directory if it was supplied by the user.

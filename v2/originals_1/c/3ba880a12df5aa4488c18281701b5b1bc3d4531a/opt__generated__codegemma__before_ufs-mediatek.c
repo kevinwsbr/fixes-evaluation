@@ -1,0 +1,1 @@
+module_platform_driver(ufs_mtk_pltform);

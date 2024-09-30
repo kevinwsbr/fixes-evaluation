@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+NVD-CWE-Other,Other,"NVD is only using a subset of CWE for mapping instead of the entire CWE, and the weakness type is not covered by that subset.",Insufficient Information,https://nvd.nist.gov/vuln/categories,False

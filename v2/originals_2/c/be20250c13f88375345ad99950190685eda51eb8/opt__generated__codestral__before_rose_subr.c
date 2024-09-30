@@ -1,0 +1,5 @@
+ This code is part of the ROSE (Radio Link Access for Network Services) protocol implementation in Linux. Here's a brief explanation of what each function does:
+
+1. `rose_build_header()`: This function builds a ROSE header from the provided information and stores it in the buffer. It handles the source and destination calls, digis (if any), and NSAP addresses. The header is formatted according to the CCITT X.25, ISO 7776, and ETSI EN 300 175 standards.
+
+2. `rose_disconnect()`: This function handles disconnections in the ROSE protocol. It stops any running timers, clears all queues, resets the LCI (Logical Channel Identifier) and state to their initial values, sets the cause and diagnostic information if provided, updates the socket's state and error codes, and then marks the socket as dead.

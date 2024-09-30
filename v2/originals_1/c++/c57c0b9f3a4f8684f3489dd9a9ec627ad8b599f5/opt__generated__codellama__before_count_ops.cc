@@ -1,0 +1,9 @@
+  This code defines several classes for counting the frequency of each element in a dense or sparse tensor. The `DenseCount` class is used to count the frequency of elements in a dense tensor, while the `SparseCount` class is used to count the frequency of elements in a sparse tensor. Both classes use the same algorithm to count the frequency of elements, but they differ in how they handle the input data.
+
+The `DenseCount` class takes a dense tensor as input and counts the frequency of each element in the tensor using a map from the element values to their corresponding frequencies. It then outputs a sparse tensor with the same shape as the input tensor, where each value in the output tensor represents the number of times that value appears in the input tensor.
+
+The `SparseCount` class takes a sparse tensor as input and counts the frequency of each element in the tensor using a map from the element values to their corresponding frequencies. It then outputs a sparse tensor with the same shape as the input tensor, where each value in the output tensor represents the number of times that value appears in the input tensor.
+
+The `RaggedCount` class takes a ragged tensor as input and counts the frequency of each element in the tensor using a map from the element values to their corresponding frequencies. It then outputs a sparse tensor with the same shape as the input tensor, where each value in the output tensor represents the number of times that value appears in the input tensor.
+
+The `REGISTER_W` macro is used to register these classes with TensorFlow, so that they can be used as custom ops in a TensorFlow graph. The `REGISTER` macro is used to define the types for which these classes can be used.

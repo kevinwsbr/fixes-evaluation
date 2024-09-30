@@ -1,0 +1,7 @@
+ This is a Linux kernel module for the USB CDC Network Control Model (NCM) host driver. The module provides support for several devices that use this protocol to communicate with a computer over USB. These include mobile broadband cards, LTE modems, and HSPA modems from vendors such as Dell, Toshiba, Huawei, and Infineon(now Intel).
+
+The `cdc_devs` array contains a list of device IDs that the driver supports. Each entry in this array specifies the vendor and product IDs for a particular device, as well as any additional matching criteria such as interface class, subclass, and protocol. The `driver_info` field for each entry points to a structure containing additional information about how the driver should handle that device.
+
+The `cdc_ncm_driver` structure defines the USB driver itself, including its name, ID table (which is set to `cdc_devs`), and callback functions for various lifecycle events such as probe, disconnect, suspend, and resume. The module registers this driver with the kernel using `module_usb_driver()`.
+
+Overall, the purpose of this module is to provide a generic USB CDC NCM host driver that can be used by multiple devices without requiring device-specific code for each one. By matching against vendor and product IDs (and other criteria as needed), the driver automatically selects the appropriate configuration and behavior for each supported device.

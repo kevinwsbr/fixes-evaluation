@@ -1,0 +1,20 @@
+This is a C program that reads and parses a Microsoft Compound File (also known as a ZIP file). It uses the `cdf` library to read the header, SAT (Short Allocation Table), SSAT (Stream Allocation Table), directory, stream, and summary information from the Compound File.
+
+The program takes an argument, which is the path to the Compound File that should be opened. The program will then read and parse the header, SAT, SSAT, directory, stream, and summary information from the Compound File, and print out some of the relevant information.
+
+Here are a few things to note about this code:
+
+* The `cdf` library is being used to perform most of the work in reading and parsing the Compound File. This library provides a set of functions that can be used to read and parse various parts of the file, such as the header, SAT, SSAT, directory, stream, and summary information.
+* The program uses a few macros from the `unistd.h` header file to open the Compound File and to perform some input/output operations on it. These macros include `open`, `close`, and `read`.
+* The program also uses a few functions from the `stdio.h` header file, such as `fprintf` and `malloc`, to print out information about the Compound File and to allocate memory for the summary information.
+* The program uses a `for` loop to iterate over all the arguments passed to it on the command line. For each argument, the program will open the corresponding Compound File, read and parse its header, SAT, SSAT, directory, stream, and summary information, and print out some of that information.
+* The program uses a `switch` statement to determine which section of the code to execute for each argument passed to it on the command line. For example, if the first argument is `-h`, the program will read and parse the header from the Compound File. If the second argument is `-sat`, the program will read and parse the SAT from the Compound File.
+* The program uses a `case` statement to determine which section of the code to execute for each argument passed to it on the command line. For example, if the first argument is `-h`, the program will read and parse the header from the Compound File. If the second argument is `-sat`, the program will read and parse the SAT from the Compound File.
+* The program uses a `while` loop to continue reading and parsing the summary information until the end of the stream is reached. For each property that is parsed, the program will print out its name and value.
+* The program uses a `for` loop to iterate over all the properties in the summary information. For each property, the program will print out its name and value.
+* The program uses a `switch` statement to determine which section of the code to execute for each argument passed to it on the command line. For example, if the first argument is `-h`, the program will read and parse the header from the Compound File. If the second argument is `-sat`, the program will read and parse the SAT from the Compound File.
+* The program uses a `case` statement to determine which section of the code to execute for each argument passed to it on the command line. For example, if the first argument is `-h`, the program will read and parse the header from the Compound File. If the second argument is `-sat`, the program will read and parse the SAT from the Compound File.
+* The program uses a `while` loop to continue reading and parsing the summary information until the end of the stream is reached. For each property that is parsed, the program will print out its name and value.
+* The program uses a `for` loop to iterate over all the properties in the summary information. For each property, the program will print out its name and value.
+
+Overall, this code is a good example of how to use the `cdf` library to read and parse a Microsoft Compound File. It demonstrates how to read and parse various parts of the file, such as the header, SAT, SSAT, directory, stream, and summary information, and how to print out some of that information.

@@ -1,0 +1,27 @@
+This is a basic template for a C++ function that converts a string to the CapRTL character set, which is a custom character set used for testing the FriBidi library. The function takes a string as input and returns a new string containing the converted text.
+
+Here's a line-by-line explanation of the code:
+
+1. `const char *fribidi_char_set_cap_rtl (const char *text)`: This is the declaration of the function that takes a null-terminated string as input and returns a new string containing the converted text in the CapRTL character set. The function is const, which means it doesn't modify the original string.
+2. `size_t len = strlen (text);`: This line calculates the length of the input string.
+3. `char *s = (char *) fribidi_malloc (len + 1);` : This line allocates memory for the output string, which will be one character longer than the input string because it needs to include the null terminator. The function `fribidi_malloc` is used to allocate memory for the output string.
+4. `int i = 0;`: This line initializes a variable to keep track of the current index in the input string.
+5. `while (text[i])`: This line starts a loop that will iterate over each character in the input string. The loop continues until it reaches the null terminator at the end of the input string.
+6. `if (!(fribidi_get_type (text[i]) & FRIBIDI_TYPE_EXPLICIT))`: This line checks whether the current character is an explicit mark or not using the `fribidi_get_type` function. If it's not an explicit mark, the following code will be executed to convert the character.
+7. `s[j++] = text[i];`: This line copies the current character from the input string to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+8. `else`: If the current character is an explicit mark, this branch of the if statement will be executed.
+9. `switch (fribidi_get_type (text[i]))`: This line checks what type of explicit mark the current character is. The function `fribidi_get_type` returns a bitmask with information about the type of each character in the input string, including whether it's an explicit mark or not.
+10. `case FRIBIDI_CHAR_LRE: s[j++] = 'l'; break;`: This line checks if the current character is a left-to-right explicit mark (LRM) and assigns the character 'l' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+11. `case FRIBIDI_CHAR_RLE: s[j++] = 'r'; break;`: This line checks if the current character is a right-to-left explicit mark (RLM) and assigns the character 'r' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+12. `case FRIBIDI_CHAR_PDF: s[j++] = 'o'; break;`: This line checks if the current character is a pop directional formatting (PDF) mark and assigns the character 'o' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+13. `case FRIBIDI_CHAR_LRO: s[j++] = 'L'; break;`: This line checks if the current character is a left-to-right overrides (LRO) mark and assigns the character 'L' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+14. `case FRIBIDI_CHAR_RLO: s[j++] = 'R'; break;`: This line checks if the current character is a right-to-left overrides (RLO) mark and assigns the character 'R' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+15. `case FRIBIDI_CHAR_LRI: s[j++] = 'i'; break;`: This line checks if the current character is a left-to-right isolates (LRI) mark and assigns the character 'i' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+16. `case FRIBIDI_CHAR_RLI: s[j++] = 'r'; break;`: This line checks if the current character is a right-to-left isolates (RLI) mark and assigns the character 'r' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+17. `case FRIBIDI_CHAR_FSI: s[j++] = 'f'; break;`: This line checks if the current character is a first strong isolates (FSI) mark and assigns the character 'f' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+18. `case FRIBIDI_CHAR_PDI: s[j++] = 'p'; break;`: This line checks if the current character is a pop directional formatting (PDI) mark and assigns the character 'p' to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+19. `default: s[j++] = text[i]; break;`: This line handles any other type of explicit mark and simply copies the current character from the input string to the output string at index `j`. The variable `j` is incremented so that we know where to place the next character in the output string.
+20. `s[len] = '\0';`: This line assigns a null terminator to the end of the output string.
+21. `return s;`: This line returns the converted string from the function.
+
+Note that this is just one possible implementation of a function for converting a string to the CapRTL character set, and there may be other ways to implement it depending on your specific needs.

@@ -1,0 +1,3 @@
+id,name,description,extended_description,url,is_category
+CWE-476,NULL Pointer Dereference,"A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit.","NULL pointer dereference issues can occur through a number of flaws, including race conditions, and simple programming omissions.",https://cwe.mitre.org/data/definitions/476.html,False
+CWE-416,Use After Free,"Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",,https://cwe.mitre.org/data/definitions/416.html,False

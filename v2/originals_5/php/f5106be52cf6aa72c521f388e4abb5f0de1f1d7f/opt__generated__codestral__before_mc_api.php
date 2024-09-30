@@ -1,0 +1,8 @@
+ This code appears to be a set of utility functions for use with a SOAP-based web service. Here's a breakdown of what each function does:
+
+1. `error_build_parameter_string($value)`: This function is used to build a string representation of a given value, which can then be used to display the parameters passed to a function in a stack trace. If the value is an array or object, it will be converted to JSON for display.
+2. `error_generate_stack_trace()`: This function generates a stack trace by calling either `xdebug_get_function_stack()` (if XDebug is enabled) or `debug_backtrace()`. It then reverses the array of stack frames and removes the call to this function itself from the stack trace. Finally, it loops through each frame in the stack trace and builds a string representation of the file name, line number, function name, and parameters passed to the function.
+3. `mci_soap_fault_login_failed()`: This function returns a SOAP fault with an error message indicating that access was denied due to a failed login attempt.
+4. `mci_soap_fault_access_denied($p_user_id, $p_detail = '')`: This function returns a SOAP fault with an error message indicating that the specified user does not have sufficient access rights for the requested action. If a detail string is provided, it will be appended to the error message.
+
+Overall, these functions appear to be designed to help with debugging and error handling in a SOAP-based web service. They provide a way to generate stack traces and return SOAP faults with appropriate error messages, which can then be used by clients of the web service to diagnose and resolve issues.

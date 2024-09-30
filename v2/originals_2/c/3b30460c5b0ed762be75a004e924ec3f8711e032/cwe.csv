@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-119,Improper Restriction of Operations within the Bounds of a Memory Buffer,"The product performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",,https://cwe.mitre.org/data/definitions/119.html,False

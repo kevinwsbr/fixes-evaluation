@@ -1,0 +1,3 @@
+  This is an example of how the code for the `ac3_sync` function might look like if you were to implement it using the AVCodecParser structure. The `ac3_parse_init` function initializes some private data that will be used by the parser, and the `ff_aac_ac3_parse` function actually performs the parsing of the audio frame. Finally, the `avpriv_ac3_parse_header` function is a stub that returns an error message indicating that it has not been implemented yet.
+
+As you can see, the AVCodecParser structure provides a way to implement an audio codec parser in a generic and modular fashion, which makes it easier to add new parsers for different audio codecs without having to modify the main parsing function.

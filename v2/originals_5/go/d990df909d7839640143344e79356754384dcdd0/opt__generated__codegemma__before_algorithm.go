@@ -1,0 +1,1 @@
+The list of numbers in the turn is a range of consecutive integers from 273415616 to 285081536. There are a total of 1178 turn actions in the turn.

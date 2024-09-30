@@ -1,0 +1,8 @@
+
+This is a Linux kernel module for the IEEE 802.2 protocol family (PF_LLC). The module registers the PF_LLC network family and provides functionality for creating LLC sockets, binding them to specific addresses, connecting them to remote peers, sending and receiving data over LLC sockets, and handling LLC-related system calls such as getsockopt() and setsockopt().
+
+The module also includes code for managing the LLC protocol stack, including managing the station table, handling incoming LLC packets, and registering LLC sockets with the kernel. The module also includes code for handling LLC-specific system calls such as sendmsg() and recvmsg().
+
+The module is initialized at boot time using the llc2_init() function, which registers the PF_LLC network family, initializes the LLC protocol stack, and adds handlers for incoming LLC packets. The module is exited using the llc2_exit() function, which cleans up resources used by the module.
+
+The module includes code for managing the LLC station table, handling incoming LLC packets, and registering LLC sockets with the kernel. It also includes code for handling LLC-specific system calls such as sendmsg() and recvmsg(). The module is initialized at boot time using the llc2_init() function, which registers the PF_LLC network family, initializes the LLC protocol stack, and adds handlers for incoming LLC packets. The module is exited using the llc2_exit() function, which cleans up resources used by the module.

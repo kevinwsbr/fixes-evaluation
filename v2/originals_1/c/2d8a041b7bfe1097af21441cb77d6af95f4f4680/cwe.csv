@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-200,Exposure of Sensitive Information to an Unauthorized Actor,The product exposes sensitive information to an actor that is not explicitly authorized to have access to that information.,,https://cwe.mitre.org/data/definitions/200.html,False

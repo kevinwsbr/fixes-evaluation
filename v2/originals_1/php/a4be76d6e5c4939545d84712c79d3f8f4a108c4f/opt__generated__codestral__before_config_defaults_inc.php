@@ -1,0 +1,8 @@
+ These are all configuration options used for webservices in MantisBT, an open-source issue tracking system. The variables control access levels to the webservices, default enum values when not found and error handling. Here's a summary:
+
+1. `$g_webservice_readwrite_access_level_threshold`: This sets the minimum global access level required to read or write data through the webservices. By default, it's set to REPORTER.
+2. `$g_webservice_admin_access_level_threshold`: This sets the minimum global access level required to use the administrator webservices. By default, it's set to MANAGER.
+3. `$g_webservice_specify_reporter_on_add_access_level_threshold`: This sets the minimum project access level needed for users to specify a reporter name when adding an issue through the webservices. If not met, the current user is used as the default reporter. By default, it's set to DEVELOPER.
+4. The next few variables (`$g_webservice_priority_enum_default_when_not_found`, `$g_webservice_severity_enum_default_when_not_found`, etc.) control the enum id that is used when the webservices receive undefined enum labels, which are not defined in the associated MantisBT installation.
+5. `$g_webservice_error_when_version_not_found`: If this is ON and a specified version is not found, then a SoapException will be raised. By default, it's set to ON.
+6. `$g_webservice_version_when_not_found`: This sets the default version to use if the specified version is not found and `$g_webservice_error_when_version_not_found == OFF`. Currently, this value does not depend on the project. By default, it's set to an empty string.

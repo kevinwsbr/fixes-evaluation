@@ -1,0 +1,9 @@
+ This is a C source code that implements functions for handling AIFF and CAF files.
+
+1. `aiff_read_chanmap`: This function reads the channel map information from an AIFF or CAF file, which is stored in a specific format within the file header. It first reads the layout tag, channel bitmap, and channel descriptions from the file using `psf_binheader_readf`. Then it checks if there's a corresponding channel layout tag in the `aiff_caf_of_channel_layout_tag` function. If found, it logs the tag and its layout name using `psf_log_printf`, and updates the channel map of the file object (SF_PRIVATE).
+2. `aiff_set_chunk`: This function is used to save a new chunk into the write chunks list in SF_PRIVATE for later writing into an AIFF or CAF file. It uses `psf_save_write_chunk`.
+3. `aiff_next_chunk_iterator`: This function returns the next chunk iterator from the read chunks list in SF_PRIVATE, which is used to traverse all the chunks in a file.
+4. `aiff_get_chunk_size`: This function finds the corresponding chunk index based on the given chunk iterator and then returns its size using `psf_find_read_chunk_iterator`.
+5. `aiff_get_chunk_data`: This function finds the corresponding chunk index based on the given chunk iterator, reads its data into the provided buffer (chunk\_info->data), and fills in other relevant information such as ID size and ID. It uses `psf_find_read_chunk_iterator`, `psf_fseek`, `psf_fread`, and `psf_ftell`.
+
+These functions are used to handle different aspects of AIFF and CAF files, including reading/writing channel map information, managing file chunks, and retrieving chunk data.

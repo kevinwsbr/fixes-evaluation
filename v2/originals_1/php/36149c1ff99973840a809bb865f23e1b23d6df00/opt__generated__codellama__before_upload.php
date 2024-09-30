@@ -1,0 +1,5 @@
+This function is used to update the document with a new file extension, if it does not already have one. It takes three parameters: `$docId`, which is the ID of the document in the course database; `$courseId`, which is the ID of the course; and `$extensionFile`, which is the file extension that should be added to the filename.
+
+The function first retrieves the title of the work from the course database using `getWorkTitle()` and uses `api_replace_dangerous_char()` to replace any dangerous characters in the title with their escaped equivalents. It then creates a new filename by concatenating the title with an underscore and the extension.
+
+The function then checks if the file already has an extension, and if not, it renames the file on the file system using `rename()` and updates the URL of the document in the course database using `UPDATE` SQL query.

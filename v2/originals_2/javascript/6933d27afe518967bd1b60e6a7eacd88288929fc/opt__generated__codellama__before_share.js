@@ -1,0 +1,9 @@
+
+This code is responsible for handling the events related to the share settings dropdown menu in the file list view of OwnCloud. It includes the following functions:
+
+1. Initialization: This function initializes the dropdown menu and its contents based on the selected item type and source. It also sets up the event handlers for the various actions that can be performed in the dropdown, such as setting an expiration date or sharing with a specific group of users.
+2. Setting an expiration date: When the user selects an option from the "Expiration" menu, this function is called to set a new expiration date for the selected share. It sends an AJAX request to the server to update the expiration date and then updates the UI accordingly. If there is an error setting the expiration date, it displays an error message in the tooltip.
+3. Emailing links: This function is not currently supported in OwnCloud's Gallery view, but it would be used to email a private link to someone. It retrieves the selected share from the DOM and then sends an AJAX request to the server to retrieve the private link for that share. The link is then emailed to the user using a third-party library like Mailgun or Postmark.
+4. Informing recipients: This function handles the "Inform Recipients" checkbox in the share settings dropdown menu. When the checkbox is checked, it sends an AJAX request to the server to enable email notifications for the selected share. If the checkbox is unchecked, it sends an AJAX request to disable email notifications for the selected share.
+
+Overall, this code is responsible for providing a flexible and customizable interface for managing shares in OwnCloud's file list view.

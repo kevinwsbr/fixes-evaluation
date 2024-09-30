@@ -1,0 +1,15 @@
+
+This is the source code for the `ExtensionManager` class, which manages the loading and unloading of extensions in Cinnamon. The class has several methods to load, enable, disable, and unload extensions, as well as handle changes to the enabled extensions setting.
+
+Here's a breakdown of the main components of the code:
+
+1. Importing required modules: `Global` and `Main` are imported at the top of the file. `Global` is a reference to the global object, which contains all the settings for Cinnamon, while `Main` provides access to the current session mode.
+2. Initializing the `ExtensionManager`: The class initializes an instance of `ExtensionManager` in its constructor. The constructor takes no arguments and simply sets up some internal state variables.
+3. Loading extensions: The `_loadExtensions()` method is called when the extension manager is initialized or when the enabled extensions setting changes. It scans for all available extensions using the `ExtensionUtils.ExtensionFinder` class, and connects a handler to the `extension-found` signal of that finder to load each found extension.
+4. Enabling/disabling extensions: The `enableAllExtensions()` and `disableAllExtensions()` methods are used to enable or disable all extensions, respectively. These methods simply iterate over the enabled extensions list and call the corresponding `enableExtension()` or `disableExtension()` method for each one.
+5. Handling changes in session mode: The `_sessionUpdated()` method is called when the session mode is updated (i.e., when the user logs out or logs back in). It checks if the current session allows extensions, and if so, enables all enabled extensions using the `enableAllExtensions()` method. If not, it disables all extensions using the `disableAllExtensions()` method.
+6. Importing extensions: The `loadExtension()` method is used to import an extension by its UUID. It loads the extension metadata from the global settings and checks if the extension is allowed to be enabled. If so, it loads the extension module and calls the `init()` method on it, which initializes the extension's state object and sets its state to `ExtensionState.DISABLED`.
+7. Enabling/disabling individual extensions: The `enableExtension()` and `disableExtension()` methods are used to enable or disable a specific extension by its UUID. These methods simply set the corresponding `Extension` object's `state` property to either `ExtensionState.ENABLED` or `ExtensionState.DISABLED`, respectively.
+8. Handling version validation: The `_onVersionValidationChanged()` method is called when the `EXTENSION_DISABLE_VERSION_CHECK_KEY` setting changes. It temporarily disables all extensions, reloads them with the new setting, and then enables them again if they are allowed by the current session mode.
+
+Overall, this code provides a basic framework for managing extensions in Cinnamon, allowing users to enable or disable individual extensions as well as enabling or disabling all extensions at once.

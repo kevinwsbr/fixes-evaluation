@@ -1,0 +1,7 @@
+ This is a part of the VC4 driver for DRM (Direct Rendering Manager), which handles video memory management and command submission for VideoCore IV hardware. The code provided has three main functions: `vc4_gem_submit`, `vc4_gem_init`, and `vc4_gem_destroy`.
+
+   `vc4_gem_submit` is called when a new command is submitted by the user application. It first checks for any unknown flags in the submission arguments, returning an error if found. Then it allocates memory for a new execution structure (`exec`) and initializes it with the provided arguments. If power management is not already enabled, it acquires a reference to the V3D device and enables its power. Next, it looks up the necessary buffer objects for the command and gets the binary command list (BCL) and render command list (RCL). Once these are obtained successfully, it queues the submission for execution. If any errors occur during this process, `vc4_complete_exec` is called to free any allocated resources.
+
+   `vc4_gem_init` sets up initial data structures and work items required for managing buffer objects (BOs), submitting jobs, handling job completion, and detecting hardware hangs. It also initializes a mutex for power management. This function is typically called during the driver's initialization phase.
+
+   `vc4_gem_destroy` is used to clean up resources when the driver is unloaded or deinitialized. It waits for any outstanding jobs to finish, releases references to the overflow memory object, frees hang detection state if allocated, and destroys the BO cache.

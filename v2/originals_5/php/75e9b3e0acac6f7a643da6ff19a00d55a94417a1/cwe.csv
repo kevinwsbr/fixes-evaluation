@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-79,Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'),The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.,,https://cwe.mitre.org/data/definitions/79.html,False

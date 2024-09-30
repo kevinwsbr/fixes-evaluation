@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-434,Unrestricted Upload of File with Dangerous Type,The product allows the attacker to upload or transfer files of dangerous types that can be automatically processed within the product's environment.,,https://cwe.mitre.org/data/definitions/434.html,False

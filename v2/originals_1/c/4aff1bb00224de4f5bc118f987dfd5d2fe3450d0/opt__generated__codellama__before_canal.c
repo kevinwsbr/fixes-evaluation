@@ -1,0 +1,5 @@
+  This is a function that finds and marks all the functions in an R2 database as noreturn if they are called by a `call` instruction without any return. It uses the `r_anal_xrefs_get` function to get all the references to a given address, checks if they are of type `R_ANAL_REF_TYPE_CALL`, and then checks if the block containing the call instruction contains any other instructions after it. If there are no instructions after the call, it assumes that the function is noreturn.
+
+It also uses the `r_anal_block_chop_noreturn` function to remove any return instructions from a given block, and then checks if the remaining instructions in the block lead to a known noreturn function. If so, it marks the function as noreturn and adds it to the list of no-return functions.
+
+It uses a hash table to keep track of which functions have already been marked as noreturn, so that it doesn't get stuck in an infinite loop trying to analyze the same function over and over again.

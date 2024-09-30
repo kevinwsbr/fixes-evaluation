@@ -1,0 +1,13 @@
+  This is a system call that allows the kernel to advise the kernel about how it should handle memory pages. It takes three arguments: `start`, which is the address of the first page to be advised; `len_in` which is the size of the range of pages to be advised; and `behavior`, which is an integer that specifies what action the kernel should take when handling these pages.
+
+The purpose of this system call is to allow applications to give the kernel hints about how they expect to use memory, in order to improve performance and reduce the amount of memory that is wasted. For example, if an application knows that it will only need a small portion of its data in memory at any given time, it can tell the kernel to drop the rest of the pages associated with that data as soon as possible. This can help to conserve memory resources and improve system performance.
+
+The `madvise` system call takes three arguments: `start`, which is the address of the first page to be advised; `len_in` which is the size of the range of pages to be advised; and `behavior`, which is an integer that specifies what action the kernel should take when handling these pages. The valid values for `behavior` are:
+
+* `MADV_NORMAL`: the default behavior, in which the kernel will use a variety of heuristics to determine how to handle the memory associated with this range of pages.
+* `MADV_RANDOM`: the kernel should load the pages into memory from disk randomly, rather than trying to keep them in cache or in order. This can be useful if an application is working with a large dataset that is not likely to be used again soon.
+* `MADV_SEQUENTIAL`: the kernel should load the pages into memory sequentially, from first to last. This can be useful if an application is working with a large dataset that is likely to be used repeatedly.
+* `MADV_WILLNEED`: the kernel should keep these pages in memory as long as possible, even if they are not currently being used. This can be useful if an application knows that it will need to access the data associated with this range of pages at some point in the future.
+* `MADV_DONTNEED`: the kernel should release all of the pages associated with this range of addresses, regardless of whether they are currently being used or not. This can be useful if an application has finished working with a large dataset and wants to free up memory resources.
+
+The system call returns 0 on success, or an error code (such as -EINVAL) if the arguments are invalid.

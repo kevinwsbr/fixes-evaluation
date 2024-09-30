@@ -1,0 +1,2 @@
+id,name,description,extended_description,url,is_category
+CWE-276,Incorrect Default Permissions,"During installation, installed file permissions are set to allow anyone to modify those files.",,https://cwe.mitre.org/data/definitions/276.html,False

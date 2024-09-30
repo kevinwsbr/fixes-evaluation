@@ -1,0 +1,9 @@
+ The provided code is a function to run a command on the CCP (Crypto Controller) engine. This function handles various commands based on their type (AES, DES3, SHA, RSA, Passthrough, and ECC), each with its own specific implementation. For AES and XTS-AES commands, it supports different modes like CMAC and GCM.
+
+   The main logic is contained within a switch statement that checks the engine type of the command. Depending on the engine type, the function calls another function to handle the specific command. If an unsupported or invalid engine type is encountered, the function returns an error code (-EINVAL).
+
+   The AES command handler (`ccp_run_aes_cmd`) is called for all AES commands except CMAC and GCM modes, which are handled by `ccp_run_aes_cmac_cmd` and `ccp_run_aes_gcm_cmd`, respectively. Similarly, the DES3 command handler (`ccp_run_des3_cmd`) is called for DES3 commands, while the SHA command handler (`ccp_run_sha_cmd`) is used for SHA commands. RSA commands are handled by `ccp_run_rsa_cmd`, passthrough commands by `ccp_run_passthru_cmd` and `ccp_run_passthru_nomap_cmd`, and ECC commands by `ccp_run_ecc_cmd`.
+
+   Within each command handler, the function checks for input validation and performs the necessary cryptographic operations using the CCP engine. The result of the operation is then stored in the appropriate field within the command structure (`cmd`). If any error occurs during this process, an error code is returned to indicate the failure.
+
+   Overall, the function provides a convenient interface for running various cryptographic commands on the CCP engine and handles all the necessary input validation and error checking to ensure the successful execution of the commands.

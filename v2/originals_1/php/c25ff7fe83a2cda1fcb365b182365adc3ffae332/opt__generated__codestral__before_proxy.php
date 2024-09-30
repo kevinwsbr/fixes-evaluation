@@ -1,0 +1,7 @@
+ This script appears to be a PHP script that acts as a proxy for WebGL files. Here's a breakdown of what it does:
+
+1. It checks if the server is configured correctly, ensuring necessary variables are set and the database connection is established.
+2. If the WebGL Proxy is disabled, it logs an error in the database (if audit logging is enabled) and returns a 'WebGL Proxy is disabled' error message.
+3. The script then checks if proxy caching is enabled. If so, it creates a MySQL table to store cached files and checks if the requested file is already in the cache. If it is, it retrieves the data from the database, logs the request (if audit logging is enabled), sets the appropriate content type header, and sends the data back to the client.
+4. If the requested file is not in the cache or proxy caching is disabled, the script uses CURL to download the file from the specified URL. It handles potential CURL errors by checking for a false return value and logging the error (if audit logging is enabled). If no errors occur, it saves the retrieved data to the database (if proxy caching is enabled), logs the request (if audit logging is enabled), sets the appropriate content type header, and sends the data back to the client.
+5. Finally, if there's a CURL error, it sends an appropriate HTTP response code based on the error number.
